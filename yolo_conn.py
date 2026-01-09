@@ -2,13 +2,6 @@ import cv2
 import time
 from ultralytics import YOLO
 from pymcprotocol import Type3E
-import os, sys
-
-# ================= 경로 지정 =================
-def resource_path(path):
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, path)
-    return path
 
 PLC_IP = "192.168.3.120"
 PLC_PORT = 5010
@@ -79,8 +72,7 @@ def reconnect_plc():
 
 # ================= 메인 루프 =================
 def webcam_yolo_plc():
-    # model = YOLO("runs/detect/train6/weights/best.pt")
-    model = YOLO(resource_path("best.pt"))
+    model = YOLO("runs/detect/train6/weights/best.pt")
 
     plc = None
     plc_connected = False
