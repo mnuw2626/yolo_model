@@ -134,7 +134,9 @@ def webcam_yolo_plc():
         annotated = r.plot()
         cv2.imshow("YOLO → PLC", annotated)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord('q') or key == 27:  # 27 = ESC
+            print("프로그램 종료")
             break
 
     cap.release()
